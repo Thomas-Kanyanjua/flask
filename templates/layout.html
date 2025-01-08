@@ -1,0 +1,53 @@
+<!Doctype html>
+<html lang="en">
+    <head>
+        <title>Online Task Manager</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <link  rel="stylesheet" href="{{ url_for('static', filename='todo.css') }}">
+
+
+    </head>
+    <body>
+        <div class="header">
+            <h1 class="header h1">Online Task Manager</h1>
+            <h3 class="header h3">Your no.1 tool for efficiency and productivity</h3>
+
+
+        </div>
+        <div >
+            {%block login%}
+
+
+            {%endblock%}
+        </div>
+        
+            
+            
+        <div class="forms-style " >  
+            {%block register%}
+
+
+            {%endblock %}
+            
+        </div> 
+        
+        
+
+    </body>
+    <footer class="footer">
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        
+        <label class="footer label ">Contact us</label>
+        <ul class="footer ul">
+            <li>0731065071</li>
+            <li>twawerugich@gmail.com</li>
+            <li>@OnlineTaskManager001</li>
+        </ul>
+        <label>Registered under Companies Act 2020. All rights reserved</label> <br>
+    </footer>
+</html>

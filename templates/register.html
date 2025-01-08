@@ -1,0 +1,51 @@
+
+{% extends "layout.html"%}
+{% block register%}
+<div>
+    <form  method="POST" action="">
+        {{ form.hidden_tag() }}
+        
+        <fieldset class="fieldset">
+            <legend class="legend">Create an account</legend>
+            <div class="forms-style ">
+                {{form.username.label(class="forms-style input") }}
+                {{form.username (class="forms-style input") }}
+                
+            </div>
+            <div class="forms-style ">
+                {{form.email.label(class="forms-style input") }}
+                {{form.email(class="forms-style input") }}
+                
+
+            </div> 
+            <div class="forms-style ">
+                {{form.password.label(class="forms-style input") }}
+                {{form.password(class="forms-style input") }}
+                
+                
+            </div>
+            <div class="forms-style ">
+                {{form.confirm_password.label(class="forms-style input") }}
+                {{form.confirm_password(class="forms-style input") }}
+                
+                
+            </div>       
+                
+        </fieldset>
+        <div class="forms-style button  ">
+            
+            {{form.submit(class="forms-style input")}}
+        </div>
+        
+    </form>
+</div>
+
+<div>
+    <small>Already have an account?<a href="{{url_for('log_in')}}">Sign in</a></small>
+</div>
+
+
+{% endblock %}
+
+
+
