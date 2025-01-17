@@ -1,4 +1,37 @@
 {%extends "layout.html"%}
-{% block log_in%}
+{% block login%}
+    <div>
+        
+        <form method="POST" action="{{url_for('login')}}">
 
-{$endblock log_in$}
+            {{ form.hidden_tag() }}
+            <div class="legend">
+                {%with messages=get_flashed_messages() %}
+                    {%if messages%}
+                        {%for message in messages%}
+                            <li>{{message}}</li>
+                        {%endfor%}
+                    {%endif%}
+    
+                {%endwith%}
+            </div>
+            <fieldset class="fieldset">
+                <legend class="legend">Sign in</legend>
+                <div class="forms-style ">
+                    {{form.email.label(class="forms-style input")}}
+                    {{form.email(class="forms-style input")}}
+                </div>
+                <div class="forms-style ">
+                    {{form.password.label(class="forms-style input")}}
+                    {{form.password(class="forms-style input")}}
+                </div>
+                
+            </fieldset>
+            <div class="forms-style ">
+                
+                {{form.submit(class="forms-style input")}}
+            </div>
+        </form>
+        <small>Need an account? <a href="{{url_for('register')}}">Sign up</a></small>
+    </div>
+{%endblock login%}

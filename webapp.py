@@ -1,5 +1,16 @@
-from flask import Flask,render_template,url_for
+from flask import Flask,render_template,url_for,redirect,flash,request
+
 from forms import RegistrationForm,LoginForm
+
+
+
+
+
+users={
+    'Thomas@email.com':'password',
+    'Barbara@email.com':'passward',
+    'Samuel@email.com':'Passuard'
+}
 
 web_app=Flask(__name__)
 
@@ -8,14 +19,26 @@ web_app.config['SECRET_KEY'] = 'temporary_key'
 
 
 @web_app.route("/")
-@web_app.route("/register",methods="[POST,GET]" )
+@web_app.route("/register", methods=["POST","GET"])
 def register():
-    reg_form=RegistrationForm()
-    return render_template('register.html',title='Register',form=reg_form)
-@web_app.route("/log in")
-def log_in():
-    login_form=LoginForm()
-    return render_template('layout.html',title='Register',form=login_form)
+    form=RegistrationForm()
+    return render_template('register.html',title='Register',form=form)
 
-if __name__=='__main__':
-    web_app.run(debug=True)   
+
+@web_app.route("/login", methods=["POST","GET"])
+def login():
+    form=LoginForm()
+    if form.validate_on_submit():
+        email=form.email.data
+        password=form.password.data
+        if email in users and users[email]==password:
+        
+            flash(f"{email} has successfully logged in")
+            return render_template('register.html')
+
+             
+        
+    return render_template('login.html',title='Login',form=form)
+
+# if __name__=='__main__':
+#     web_app.run(debug=True)   
